@@ -6,11 +6,11 @@ import (
 	"log"
 )
 
-var infuraURl = "https://mainnet.infura.io/v3/66c41c21577b45b0848e04dc31fe30d4"
+var infuraURL = "https://mainnet.infura.io/v3/66c41c21577b45b0848e04dc31fe30d4"
 
 func main() {
 	// create the eth client
-	ethclient.DialContext(context.Background(), infuraURL)
+	client, err := ethclient.DialContext(context.Background(), infuraURL)
 	if err != nil {
 		log.Fatalf("Error creating ethereum client: %v", err)
 	}
