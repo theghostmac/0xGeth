@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"math"
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -38,10 +39,13 @@ func main() {
 	}
 	fmt.Println("The balance is: ", balance)
 
-	// convert the balance to correct Ether units
+	// convert the balance to correct Ether units.
 	correctBalance := new(big.Float)
 	correctBalance.SetString(balance.String())
 	fmt.Println("The correct balance is: ", correctBalance)
 
-	// express balance in ether
+	// express balance in ether.
+	// 1 Ether = 10^18 wei.
+	condensedAmount := new(big.Float).Quo(correctBalance, big.NewFloat(math.Pow10(18)))
+	fmt.Println("The detailed amount in the wallet address is: ", condensedAmount)
 }
